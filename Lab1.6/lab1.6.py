@@ -9,14 +9,14 @@ def classfunc(configfiles): # Создаем функцию для поиска 
         with open(configfile, 'r') as f: # Открытие файла для последующего работы с ним
             for line in f:                                                                                          #------------------
                 line = line.strip()                                                                                 #
-                if bool(re.match(r'^ip\saddress\s[\d]+\.[\d]+\.[\d]+\.[\d]\s[\d]+\.[\d]+\.[\d]+\.[\d]$', line)):    #
-                    var1 = re.match(r'^ip\saddress\s[\d]+\.[\d]+\.[\d]+\.[\d]\s[\d]+\.[\d]+\.[\d]+\.[\d]$', line)   # Цикл для поиска в строке
+                if bool(re.match(r'^ip\saddress\s[\d]+\.[\d]+\.[\d]+\.[\d]+\s[\d]+\.[\d]+\.[\d]+\.[\d]+$', line)):    #
+                    var1 = re.match(r'^ip\saddress\s[\d]+\.[\d]+\.[\d]+\.[\d]+\s[\d]+\.[\d]+\.[\d]+\.[\d]+$', line)   # Цикл для поиска в строке
                     iplist[len(iplist)] = var1.group()                                                              # файла следующих данных по маске:
                 elif bool(re.match(r'^interface\s\w+Ethernet\d\/\d$', line)):                                       # ip address x.x.x.x x.x.x.x
                     var1 = re.match(r'^interface\s\w+Ethernet\d\/\d$', line)                                        # interface GigabitEthernetX/X
                     interfacelist[len(interfacelist)] = var1.group()                                                # hostname xxx
-                elif bool(re.match(r'^hostname ...$', line)):                                                       #
-                    var1 = re.match(r'^hostname ...$', line)                                                        #
+                elif bool(re.match(r'^hostname\s.+$', line)):                                                       #
+                    var1 = re.match(r'^hostname\s.+$', line)                                                        #
                     hostlist[len(hostlist)] = var1.group()                                                          #
     return iplist, interfacelist, hostlist                                                                          #----------------------
 
